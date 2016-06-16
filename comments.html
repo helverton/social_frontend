@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+<html ng-app="app"> 
+	<head> 
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>Social</title>
+
+	    <link rel="stylesheet"  href="../assets/css/jquery.mobile-1.4.5.min.css" />
+		<script src="../assets/js/jquery.min.js"></script>
+	    <script src="../assets/js/jquery.mobile-1.4.5.min.js"></script>  
+	    <script src="../assets/js/angular.min.js"></script>
+	    <script src="../assets/js/angular-resource.min.js"></script>
+	    <script src="js/main.js"></script> 
+	    <script src="js/comment.js"></script> 
+	</head> 
+	<body> 
+
+		<div ng-controller="CommentListController">
+			<div id="comment-list" data-role="page">
+				<div data-role="header" data-position="fixed">
+					<h1>Comentários</h1>
+						<a href="comment_add.html?id={{post_id}}" data-role="button" data-icon="plus" data-theme="b" rel="external">Novo</a>
+				</div>
+				
+				<div data-role="content">	
+					<ul data-role="listview" data-inset="true">
+						<li ng-repeat="comment in comments">
+								<img src="img/woody.png" height="200" width="150">
+								Post: {{comment.post_id}} </br>
+								User: {{comment.user.name}} </br>
+								Hora: {{comment.created_at}} </br>
+								Texto: {{comment.texto}} </br>
+						</li>
+					</ul>
+				</div>
+
+				<div data-role="footer" data-position="fixed">
+			    	<p></p>
+				</div>		
+			</div>
+		</div>
+	</body>
+</html>

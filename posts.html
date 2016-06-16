@@ -1,0 +1,71 @@
+<!DOCTYPE html> 
+<html ng-app="app"> 
+	<head> 
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>Social</title>
+
+	    <link rel="stylesheet"  href="../assets/css/jquery.mobile-1.4.5.min.css" />
+	    <script src="../assets/js/jquery.min.js"></script>
+	    <script src="../assets/js/jquery.mobile-1.4.5.min.js"></script>  
+	    <script src="../assets/js/angular.min.js"></script>
+	    <script src="../assets/js/angular-resource.min.js"></script>
+	    <script src="js/main.js"></script> 
+	    <script src="js/post.js"></script>
+	</head> 
+	<body> 
+
+		<div ng-controller="PostController">
+			<div id="post-list" data-role="page">
+				<div data-role="header" data-position="fixed">
+					<h1>Posts</h1>
+						<a href="#post-add" data-role="button" data-icon="plus" data-theme="b" data-transition="slide">Novo</a>
+				</div>
+				
+				<div data-role="content">	
+					<ul data-role="listview" data-inset="true">
+						<li ng-repeat="post in posts">
+								<img src="img/woody.png" height="200" width="150">
+								Id: {{post.id}} </br>
+								User: {{post.user.name}} </br>
+								Hora: {{post.created_at}} </br>
+								Título: {{post.titulo}} </br>
+								Texto: {{post.texto}} </br>
+								Curtidas: {{post.curtidas}}</br>
+							<p style="width:100%">
+								<button style="width:40%" data-icon="check" data-theme="b" data-role="button" ng-click="curtir(post)">
+							        Curtir
+							    </button>
+						    	<a style="width:40%" href="comments.html?id={{post.id}}" data-role="button" data-icon="bullets" data-theme="b" rel="external">Comentários</a>
+						    </p>
+						</li>
+					</ul>
+				</div>
+
+				<div data-role="footer" data-position="fixed">
+			    	<p></p>
+				</div>		
+			</div>
+
+
+			<div id="post-add" data-role="page">
+				<div data-role="header" data-position="fixed">
+					<h1>Novo post</h1>
+				</div>
+
+			    <div data-role="content">
+					<input type="text" ng-model="post.titulo" placeholder="Digite o título!"/>
+					<textarea ng-model="post.texto" placeholder="Digite o texto!"></textarea>
+
+					<button ng-disabled="!post.titulo || !post.texto" data-theme="b" data-role="button" ng-click="save()">
+				        Salvar
+				    </button>      
+			    </div>
+
+			    <div data-role="footer" data-position="fixed">
+			        <p></p>
+			    </div>      
+			</div>
+		</div>
+	</body>
+</html>

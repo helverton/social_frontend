@@ -1,0 +1,42 @@
+<!DOCTYPE html> 
+<html ng-app="app"> 
+	<head> 
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>Social</title>
+
+	    <link rel="stylesheet"  href="../assets/css/jquery.mobile-1.4.5.min.css" />
+		<script src="../assets/js/jquery.min.js"></script>
+	    <script src="../assets/js/jquery.mobile-1.4.5.min.js"></script>  
+	    <script src="../assets/js/angular.min.js"></script>
+	    <script src="../assets/js/angular-resource.min.js"></script>
+	    <script src="js/login.js"></script>
+	</head> 
+	<body> 
+
+		<div ng-controller="LoginController">
+			<div id="comment-add" data-role="page">
+				<div data-role="header" data-position="fixed">
+					<h1>Login</h1>
+				</div>
+
+			    <div data-role="content">
+			    	{{message}}
+					<input type="text" ng-model="user.email" placeholder="Digite seu email!"/>
+					<input type="password" ng-model="user.password" placeholder="Digite sua senha!"/>
+
+					<button ng-disabled="!user.email || !user.password" data-theme="b" data-role="button" ng-click="login()">
+				        Acessar
+				    </button>
+				    <button ng-disabled="!user.email || !user.password" data-theme="b" data-role="button" ng-click="save()">
+				        Cadastrar
+				    </button>      
+			    </div>
+
+			    <div data-role="footer" data-position="fixed">
+			        <p></p>
+			    </div>      
+			</div>
+		</div>
+	</body>
+</html>
